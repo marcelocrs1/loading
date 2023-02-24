@@ -27,7 +27,10 @@
       </div>
     </div>
 
-    <div class="line-wobble"></div>
+    <div class="load">
+      <div class="line-wobble"></div>
+      <div class="line-wobble2"></div>
+    </div>
   </main>
 </template>
 
@@ -80,10 +83,12 @@ export default {};
 }
 
 .animate-svg svg path:nth-of-type(2) {
-  animation: svganimation 3.2s forwards infinite;
+  animation: svganimation 3s forwards infinite !important;
+  animation-delay: 320ms !important;
 }
 .animate-svg2 svg path:nth-of-type(2) {
-  animation: svganimation 3.2s forwards infinite;
+  animation: svganimation 3s forwards infinite !important;
+  animation-delay: 320ms !important;
 }
 
 @keyframes svganimation {
@@ -105,10 +110,10 @@ export default {};
 
 .line-wobble {
   --uib-size: 600px;
-  --uib-speed: 2.5s;
-  --uib-color: #9fd1ff;
+  --uib-speed: 3s;
+  --uib-color: linear-gradient(to left, #0e63d2, #ddd);
   /* --uib-color: #0e63d2; */
-  --uib-line-weight: 3px;
+  --uib-line-weight: 2px;
   position: relative;
   display: flex;
   align-items: center;
@@ -127,7 +132,7 @@ export default {};
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: var(--uib-color);
+  background-image: linear-gradient(to left, #0e63d2, #ddd);
   opacity: 0.1;
 }
 
@@ -138,7 +143,7 @@ export default {};
   border-radius: calc(var(--uib-line-weight) / 2);
   animation: wobble var(--uib-speed) ease-in-out infinite;
   transform: translateX(-90%);
-  background-color: var(--uib-color);
+  background-image: var(--uib-color);
 }
 
 @keyframes wobble {
@@ -150,5 +155,59 @@ export default {};
   50% {
     transform: translateX(90%);
   }
+}
+.line-wobble2 {
+  --uib-size: 600px;
+  --uib-speed: 3s;
+  --uib-color: linear-gradient(to right, #ddd, #0e63d2);
+  /* --uib-color: #0e63d2; */
+  --uib-line-weight: 2px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--uib-line-weight);
+  width: var(--uib-size);
+  border-radius: calc(var(--uib-line-weight) / 2);
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.line-wobble2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: var(--uib-color);
+  opacity: 0.1;
+}
+
+.line-wobble2::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  border-radius: calc(var(--uib-line-weight) / 2);
+  animation: wobble2 var(--uib-speed) ease-in-out infinite;
+  transform: translateX(-90%);
+  background-image: var(--uib-color);
+}
+
+@keyframes wobble2 {
+  0%,
+  100% {
+    transform: translateX(90%);
+  }
+
+  50% {
+    transform: translateX(-90%);
+  }
+}
+
+.load {
+  display: flex;
+  flex-flow: column;
+  gap: 2px;
 }
 </style>
