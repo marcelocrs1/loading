@@ -27,13 +27,14 @@
       </div>
     </div>
 
-    <div class="load">
-      <div class="loader">
-        <div class="bar"></div>
-      </div>
-      <div class="loader">
-        <div class="bar2"></div>
-      </div>
+    <!-- <div class="load">
+      <div class="line-wobble"></div>
+      <div class="line-wobble2"></div>
+    </div> -->
+    <div class="loading-bar">
+      <div class="loading-bar-part"></div>
+      <div class="loading-bar-part"></div>
+      <div class="loading-bar-part"></div>
     </div>
   </main>
 </template>
@@ -111,71 +112,149 @@ export default {};
 }
 
 /* ------- loading bar -------- */
-.load {
+
+.line-wobble {
+  --uib-size: 600px;
+  --uib-speed: 3s;
+  --uib-color: linear-gradient(to left, #0e63d2, #ddd);
+  /* --uib-color: #0e63d2; */
+  --uib-line-weight: 2px;
+  position: relative;
   display: flex;
-  flex-flow: column;
-  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  height: var(--uib-line-weight);
+  width: var(--uib-size);
+  border-radius: calc(var(--uib-line-weight) / 2);
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
 }
-.loader {
+
+.line-wobble::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to left, #0e63d2, #ddd);
+  opacity: 0.1;
+}
+
+.line-wobble::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  border-radius: calc(var(--uib-line-weight) / 2);
+  animation: wobble var(--uib-speed) ease-in-out infinite;
+  transform: translateX(-90%);
+  background-image: var(--uib-color);
+}
+
+@keyframes wobble {
+  0%,
+  100% {
+    transform: translateX(-90%);
+  }
+
+  50% {
+    transform: translateX(90%);
+  }
+}
+.line-wobble2 {
   --uib-size: 600px;
   --uib-speed: 3s;
   --uib-color: linear-gradient(to right, #ddd, #0e63d2);
   /* --uib-color: #0e63d2; */
   --uib-line-weight: 2px;
-  background-image: linear-gradient(to left, #ddd, #0e63d2);
-  background-clip: content-box;
   position: relative;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: var(--uib-line-weight);
   width: var(--uib-size);
   border-radius: calc(var(--uib-line-weight) / 2);
   overflow: hidden;
+  transform: translate3d(0, 0, 0);
 }
 
-.bar {
-  width: 300px;
-  height: 20px;
-  background-color: transparent;
+.line-wobble2::before {
+  content: "";
   position: absolute;
-  left: -50px;
   top: 0;
-  animation: move 3s infinite linear;
-  box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.5);
-  mix-blend-mode: difference;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: var(--uib-color);
+  opacity: 0.1;
+}
+
+.line-wobble2::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  border-radius: calc(var(--uib-line-weight) / 2);
+  animation: wobble2 var(--uib-speed) ease-in-out infinite;
+  transform: translateX(-90%);
+  background-image: var(--uib-color);
+}
+
+@keyframes wobble2 {
+  0%,
+  100% {
+    transform: translateX(90%);
+  }
+
+  50% {
+    transform: translateX(-90%);
+  }
+}
+
+.load {
+  display: flex;
+  flex-flow: column;
+  gap: 2px;
+}
+
+.loading-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 200px;
+  height: 10px;
+  background-image: linear-gradient(to left, #ddd, #0e63d2);
+  /* position: relative; */
+  overflow: hidden;
+}
+
+.loading-bar-part {
+  height: 100%;
+  background-color: transparent;
+  animation: move 1.5s ease-in-out infinite;
+}
+
+.loading-bar-part:nth-child(1) {
+  background-color: #323232;
+  width: 100px;
+}
+
+.loading-bar-part:nth-child(2) {
+  width: 100px;
+}
+
+.loading-bar-part:nth-child(3) {
+  background-color: #323232;
+  width: 100px;
 }
 
 @keyframes move {
   0% {
-    transform: translateX(220%);
+    transform: translateX(-100%);
   }
   50% {
-    transform: translateX(-90%);
+    transform: translateX(100%);
   }
   100% {
-    transform: translateX(220%);
-  }
-}
-.bar2 {
-  width: 300px;
-  height: 20px;
-  background-color: transparent;
-  position: absolute;
-  left: -50px;
-  top: 0;
-  animation: move2 3s infinite linear;
-  box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.5);
-  mix-blend-mode: difference;
-}
-
-@keyframes move2 {
-  0% {
-    transform: translateX(-90%);
-  }
-  50% {
-    transform: translateX(220%);
-  }
-  100% {
-    transform: translateX(-90%);
+    transform: translateX(-100%);
   }
 }
 </style>
