@@ -122,7 +122,7 @@ export default {};
   --uib-color: linear-gradient(to right, #ddd, #0e63d2);
   /* --uib-color: #0e63d2; */
   --uib-line-weight: 2px;
-  background-image: linear-gradient(to left, #ddd, #0e63d2);
+  background-image: linear-gradient(to left, #dddddd67, #0e63d267);
   background-clip: content-box;
   position: relative;
   overflow: hidden;
@@ -139,9 +139,9 @@ export default {};
   position: absolute;
   left: -50px;
   top: 0;
-  animation: move 3s infinite linear;
-  box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.5);
-  mix-blend-mode: difference;
+  animation: move 3s infinite ease-out;
+  box-shadow: 0 0 0 1000px #181818e7;
+  mix-blend-mode: normal;
 }
 
 @keyframes move {
@@ -162,9 +162,9 @@ export default {};
   position: absolute;
   left: -50px;
   top: 0;
-  animation: move2 3s infinite linear;
-  box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.5);
-  mix-blend-mode: difference;
+  animation: move2 3s infinite ease-out;
+  box-shadow: 0 0 0 1000px #181818e7;
+  mix-blend-mode: normal;
 }
 
 @keyframes move2 {
