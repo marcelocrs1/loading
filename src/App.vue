@@ -1,10 +1,12 @@
 <script setup>
+import Backup from "./components/Backup.vue";
 import Loading from "./components/Loading.vue";
 </script>
 
 <template>
   <main class="app">
-    <Loading />
+    <!-- <Loading /> -->
+    <Backup />
   </main>
 </template>
 
