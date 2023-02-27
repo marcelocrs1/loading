@@ -64,18 +64,18 @@ export default {};
 }
 .animate-svg {
   display: flex;
-  width: 80px;
+  width: 130px;
   height: max-content;
   /* margin: 200px auto; */
 }
 .animate-svg2 {
   display: flex;
-  width: 80px;
+  width: 130px;
   height: max-content;
   /* margin: 200px auto; */
 }
 .animate-svg svg {
-  stroke-width: 5px;
+  stroke-width: 8px;
   stroke: #0e63d2;
   width: 100%;
   height: 100%;
@@ -84,7 +84,7 @@ export default {};
   animation: svganimation 3s forwards infinite;
 }
 .animate-svg2 svg {
-  stroke-width: 5px;
+  stroke-width: 8px;
   stroke: #ddd;
   width: 100%;
   height: 100%;
@@ -191,16 +191,18 @@ export default {};
 /* From cssbuttons.io by @satyamchaudharydev */
 .loader23 {
   --loader: #0a6ff2;
-  --loader-size: 3px;
+  --loader-size: 6px;
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   overflow: hidden;
   transition: 0.5s;
   letter-spacing: 2px;
   border-radius: 8px;
-  background-color: #c5c5c5;
+  background-color: #303030;
   z-index: -1;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .loader23 span {
